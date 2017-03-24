@@ -14,5 +14,5 @@ I want to find out whether @realDonaldTrump targets different "enemies" as candi
 
 <b>To-do:</b>
 1. Create challenges sheet (front end)
-2. Run text mining programme (https://www.r-bloggers.com/sentiment-analysis-on-donald-trump-using-r-and-tableau, http://stackoverflow.com/questions/4600612/extracting-nounnoun-or-adjnounnoun-from-text, https://eight2late.wordpress.com/2015/05/27/a-gentle-introduction-to-text-mining-using-r/, https://blog.monkeylearn.com/donald-trump-vs-hillary-clinton-sentiment-analysis-twitter-mentions/)
+2. Find a good text mining programme (top choices: http://journal.code4lib.org/articles/11626, https://eight2late.wordpress.com/2015/05/27/a-gentle-introduction-to-text-mining-using-r/; others for reference: https://www.r-bloggers.com/sentiment-analysis-on-donald-trump-using-r-and-tableau, http://stackoverflow.com/questions/4600612/extracting-nounnoun-or-adjnounnoun-from-text, https://blog.monkeylearn.com/donald-trump-vs-hillary-clinton-sentiment-analysis-twitter-mentions/)
 3. Think about front-end design
