@@ -13,6 +13,8 @@ I want to find out whether @realDonaldTrump targets different "enemies" as candi
 - Taking out capital letters? -> don't trust DT's grammar.
 - 25/3/17:  Now I am running the tm library in R to find out Trump's favourite enemies. I am using this guide: https://eight2late.wordpress.com/2015/05/27/a-gentle-introduction-to-text-mining-using-r/. I'm OK with removing punctuation in this case as I will analyse Trump's use of punctuation separately.
 
+<i> 25/3: I've run tm over Trump's tweets as candidate and have removed punctuation, numbers, etc. Currently stuck on how to remove hyperlinks.</i>
+
 <b>To-do:</b>
 1. Create challenges sheet (front end)
 2. Find a good text mining programme (top choices: http://journal.code4lib.org/articles/11626, https://eight2late.wordpress.com/2015/05/27/a-gentle-introduction-to-text-mining-using-r/; others for reference: https://www.r-bloggers.com/sentiment-analysis-on-donald-trump-using-r-and-tableau, http://stackoverflow.com/questions/4600612/extracting-nounnoun-or-adjnounnoun-from-text, https://blog.monkeylearn.com/donald-trump-vs-hillary-clinton-sentiment-analysis-twitter-mentions/)
