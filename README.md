@@ -11,6 +11,7 @@ I want to find out whether @realDonaldTrump targets different "enemies" as candi
 <b>Examining tweets (IN PROGRESS):</b>
 - Want to run text mining programme on the scraped tweets -- but which one? Sentiment analysis vs word frequency
 - Taking out capital letters? -> don't trust DT's grammar.
+- 25/3/17:  Now I am running the tm library in R to find out Trump's favourite enemies. I am using this guide: https://eight2late.wordpress.com/2015/05/27/a-gentle-introduction-to-text-mining-using-r/. I'm OK with removing punctuation in this case as I will analyse Trump's use of punctuation separately.
 
 <b>To-do:</b>
 1. Create challenges sheet (front end)
