@@ -1,21 +1,26 @@
 # twitterEnemies
+ 
+I wanted to analyse @realDonaldTrump's most frequently used words when he tweeted as candidate, president-elect and president, and -- if possible -- whether he targeted different "enemies" during these three period. 
 
-I want to find out whether @realDonaldTrump targets different "enemies" as candidate, PEOTUS and POTUS.
+Here's how I did it.
 
-<b>Scraping and cleaning tweets:</b>
-1. Got Twitter oAuth access
-2. <a href="http://www.interhacktives.com/2017/01/25/scrape-tweets-r-journalists/">Ran scraping package in R</a> using stringr, twitteR, etc.: got tweets from 29/9/2016 to 15/3/2017. Got 839 tweets -- enough for my analysis.
+<i>Scraping and cleaning tweets:</i>
+1. Got Twitter oAuth access via apps.twitter.com
+2. <a href="http://www.interhacktives.com/2017/01/25/scrape-tweets-r-journalists/">Ran scraping package in R</a> using stringr, twitteR, etc. 
 3. Exported to CSV
-4. Cleaned data: dirty sheet "trumptweets_complete", cleaned to reflect time frames (Candidate: 29/9 to 8/11; PEOTUS: 9/11 to 11am 20/1; POTUS: 20/1 to 15/3)
+4. Cleaned data to reflect time frames (tweets as candidate, from 29/9 to 8/11; as PEOTUS from 9/11 to 11am 20/1; as POTUS from 20/1 to 15/3)
 
-<b>Examining tweets (IN PROGRESS):</b>
-- Want to run text mining programme on the scraped tweets -- but which one? Sentiment analysis vs word frequency
-- Taking out capital letters? -> don't trust DT's grammar.
-- 25/3/17:  Now I am running the tm library in R to find out Trump's favourite enemies. I am using this guide: https://eight2late.wordpress.com/2015/05/27/a-gentle-introduction-to-text-mining-using-r/. I'm OK with removing punctuation in this case as I will analyse Trump's use of punctuation separately.
+<b>Examining tweets</b>
+1. Ran text mining programme on the scraped tweets, now sorted into separate csv files according to the time frame. I found <a href="https://eight2late.wordpress.com/2015/05/27/a-gentle-introduction-to-text-mining-using-r/">eight2late's introduction to text mining with R</a> the clearest and the most useful. I didn't use all of its suggestsions, such as stripping whitespace and 
+2. Downloaded data to csv files for further cleaning and analysis
 
-<i> 25/3: I've run tm over Trump's tweets as candidate and have removed punctuation, numbers, etc. Currently stuck on how to remove hyperlinks.</i>
+<b>Outstanding tasks</b>
+- Clean and analyse popular words after running text mining programme
+- Think about front-end design: currently made a few raw graphs using ggplot; perhaps something interactive?
+- Create wordcloud
 
-<b>To-do:</b>
-1. Create challenges sheet (front end)
-2. Find a good text mining programme (top choices: http://journal.code4lib.org/articles/11626, https://eight2late.wordpress.com/2015/05/27/a-gentle-introduction-to-text-mining-using-r/; others for reference: https://www.r-bloggers.com/sentiment-analysis-on-donald-trump-using-r-and-tableau, http://stackoverflow.com/questions/4600612/extracting-nounnoun-or-adjnounnoun-from-text, https://blog.monkeylearn.com/donald-trump-vs-hillary-clinton-sentiment-analysis-twitter-mentions/)
-3. Think about front-end design
+<b>Stumbles</b>
+- I specified in the package that I wanted 3,200 tweets (the maximum number of tweets that can be scraped) but could only get 839, between 29/9/2016 and 15/3/2017 for some reason, despite multiple attempts on separate packages and using different oAuth keys. Regardless, I got 839 tweets, which were enough for a quick analysis.
+- To fix the above problem, I also tried to scrape the tweets using Python, using the <a href="https://www.buzzfeed.com/lamvo/the-twitterverse-of-donald-trump-in-26234-tweets?utm_term=.iwqa5vJlE#.nvnGmroWE">guide provided by BuzzFeed's Lam Thuy Vo</a> last December. Unfortunately, this was fruitless: the link to one of the scripts that she provided was broken, and my Terminal refused to install pip despite multiple attempts
+
+<i>Times updated: 25/3; 5/4</i>
