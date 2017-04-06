@@ -4,7 +4,7 @@ I wanted to analyse @realDonaldTrump's most frequently used words when he tweete
 
 Here's how I did it.
 
-<i>Scraping and cleaning tweets:</i>
+<b>Scraping and cleaning tweets:</b>
 1. Got Twitter oAuth access via apps.twitter.com
 2. <a href="http://www.interhacktives.com/2017/01/25/scrape-tweets-r-journalists/">Ran scraping package in R</a> using stringr, twitteR, etc. 
 3. Exported to CSV
@@ -20,7 +20,7 @@ Here's how I did it.
 - Create wordcloud
 
 <b>Stumbles</b>
-- I specified in the package that I wanted 3,200 tweets (the maximum number of tweets that can be scraped) but could only get 839, between 29/9/2016 and 15/3/2017 for some reason, despite multiple attempts on separate packages and using different oAuth keys. Regardless, I got 839 tweets, which were enough for a quick analysis.
-- To fix the above problem, I also tried to scrape the tweets using Python, using the <a href="https://www.buzzfeed.com/lamvo/the-twitterverse-of-donald-trump-in-26234-tweets?utm_term=.iwqa5vJlE#.nvnGmroWE">guide provided by BuzzFeed's Lam Thuy Vo</a> last December. Unfortunately, this was fruitless: the link to one of the scripts that she provided was broken, and my Terminal refused to install pip despite multiple attempts
+- I specified in the package that I wanted 3,200 tweets (the maximum number of tweets that can be scraped) but could only get 839, between 29/9/2016 and 15/3/2017 for some reason, despite multiple attempts on separate packages and using different oAuth keys. (David Robinson also noted <a href="http://varianceexplained.org/r/trump-tweets/">in his scraping guide</a>: "We can reuest only 3200 tweest at a time; it will return fewer depending on the API.") Regardless, I got 839 tweets, which were enough for a quick analysis.
+- In an attempt to fix the above problem, I also tried to scrape the tweets using Python, using the <a href="https://www.buzzfeed.com/lamvo/the-twitterverse-of-donald-trump-in-26234-tweets?utm_term=.iwqa5vJlE#.nvnGmroWE">guide provided by BuzzFeed's Lam Thuy Vo</a> last December. Unfortunately, this was fruitless: the link to one of the scripts that she provided was broken, and my Terminal refused to install pip despite multiple attempts
 
 <i>Times updated: 25/3; 5/4</i>
