@@ -1,5 +1,6 @@
-Last login: Thu Apr  6 15:24:47 on ttys000
-Alexandras-MacBook-Air-2:~ ama1$ curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
+# downloading source of packages
+curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
+
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 1558k  100 1558k    0     0   651k      0  0:00:02  0:00:02 --:--:--  661k
@@ -7,11 +8,13 @@ Alexandras-MacBook-Air-2:~ ama1$ curl https://bootstrap.pypa.io/get-pip.py > get
 # instructions from https://github.com/bpb27/twitter_scraping
 
 # installing pip
-Alexandras-MacBook-Air-2:~ ama1$ sudo python get-pip.py
+sudo python get-pip.py
+
 Requirement already up-to-date: pip in /anaconda/lib/python3.6/site-packages
 
 # installing selenium (failed version)
-Alexandras-MacBook-Air-2:~ ama1$ pip3 install selenium
+pip3 install selenium
+
 Collecting selenium
 p  Downloading selenium-3.3.3-py2.py3-none-any.whl (931kB)
     100% |████████████████████████████████| 931kB 588kB/s 
@@ -45,7 +48,8 @@ Traceback (most recent call last):
 PermissionError: [Errno 13] Permission denied: '/usr/local/selenium'
 
 # installing tweepy
-Alexandras-MacBook-Air-2:~ ama1$ pip3 install tweepy
+pip3 install tweepy
+
 Collecting tweepy
   Downloading tweepy-3.5.0-py2.py3-none-any.whl
 Collecting six>=1.7.3 (from tweepy)
@@ -65,11 +69,9 @@ Successfully built oauthlib
 Installing collected packages: six, requests, oauthlib, requests-oauthlib, tweepy
 Successfully installed oauthlib-2.0.2 requests-2.13.0 requests-oauthlib-0.8.0 six-1.10.0 tweepy-3.5.0
 
-Alexandras-MacBook-Air-2:~ ama1$ cd /Users/ama1/Desktop
-
 # installing selenium
-Alexandras-MacBook-Air-2:Desktop ama1$ sudo pip install selenium
-Password:
+sudo pip install selenium
+
 The directory '/Users/ama1/Library/Caches/pip/http' or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
 The directory '/Users/ama1/Library/Caches/pip' or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
 Collecting selenium
@@ -79,7 +81,8 @@ Installing collected packages: selenium
 Successfully installed selenium-3.3.3
 
 # scraping!
-Alexandras-MacBook-Air-2:Desktop ama1$ python3 scrape.py
+python3 scrape.py
+
 https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-06%20until%3A2016-04-07include%3Aretweets&src=typd
 2016-04-06
 1 tweets found, 0 total
@@ -1327,6 +1330,7 @@ all done here
 
 # getting the metadata!
 Alexandras-MacBook-Air-2:Desktop ama1$ python3 get_metadata.py
+
 total ids: 2426
 currently getting 0 - 100
 currently getting 100 - 200
