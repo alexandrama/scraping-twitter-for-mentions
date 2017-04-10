@@ -1,4 +1,4 @@
-# script from https://github.com/bpb27/twitter_scraping 
+# script and comments from https://github.com/bpb27/twitter_scraping 
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -6,7 +6,6 @@ from selenium.common.exceptions import NoSuchElementException, StaleElementRefer
 from time import sleep
 import json
 import datetime
-
 
 # edit these three variables
 user = 'realdonaldtrump'
@@ -16,7 +15,6 @@ end = datetime.datetime(2017, 4, 6)  # year, month, day
 # only edit these if you're having problems
 delay = 1  # time to wait on each page load before reading the page
 driver = webdriver.Safari()  # options are Chrome() Firefox() Safari()
-
 
 # don't mess with this stuff
 twitter_ids_filename = 'all_ids.json'
@@ -73,7 +71,6 @@ for day in range(days):
         print('no tweets on this day')
 
     start = increment_day(start, 1)
-
 
 try:
     with open(twitter_ids_filename) as f:
