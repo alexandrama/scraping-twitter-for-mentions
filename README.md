@@ -1,26 +1,22 @@
 # twitterEnemies
- 
-I wanted to analyse @realDonaldTrump's most frequently used words when he tweeted as candidate, president-elect and president, and -- if possible -- whether he targeted different "enemies" during these three period. 
+
+I wanted to run a meaningful analysis of @realDonaldTrump's frequently used words when he was tweeting as presidential candidate, president-elect and president. I also wanted to find out, if applicable, whether he had different "enemies" during these three periods.
 
 Here's how I did it.
 
-<b>Scraping and cleaning tweets:</b>
-1. Got Twitter oAuth access via apps.twitter.com
-2. <a href="http://www.interhacktives.com/2017/01/25/scrape-tweets-r-journalists/">Ran scraping package in R</a> using stringr, twitteR, etc. 
-3. Exported to CSV
-4. Cleaned data to reflect time frames (tweets as candidate, from 29/9 to 8/11; as PEOTUS from 9/11 to 11am 20/1; as POTUS from 20/1 to 15/3)
+<i>Scraping and cleaning tweets:</i>
+- Got Twitter oAuth access via <a href="https://apps.twitter.com/">apps.twitter.com</a>
+- Ran scraping package in R using stringr, twitteR, etc. for further analysis. <b>Script to be uploaded soon.</b>
+- After running the package with two separate packages and Twitter API keys, I found that the package/Twitter API failed to get the complete collection of tweets I wanted: not only did it not scrape 3,200 tweets, it also left out numerous tweets from certain time periods (for example, tweets between 29 September and 5 October 2016 were completely missing).
+- I decided to run a Python package, <a href="https://github.com/bpb27/twitter_scraping">forked from bpb27</a> with a separate Twitter API key, to see if my scrape would be better. <b>Script to be uploaded soon</b>.
+- Weirdly enough, tweets were also missing in this package (those between 11 March and 15 March 2017, for instance, were completely missing from this scrape). At this point I started to think it was my Twitter API keys, rather than the scripts, acting up. Sad!
+- To resolve this issue, I merged the data from both the R and Python scrapes, and removed the duplicates to get the final collection. Due to many different special characters present, I had to manually sort through every tweet again to find duplicates.
+- I divided the data from the final dataset into three time frames: tweets as candidate, from 6 Oct 2016 to 8 Nov 2016; as president-elect from 9 November 2016 to 20 January 2017; as president from 20 January 2017 to 15 March 2017. This gave me 160 days' worth of tweets to examine.
 
-<b>Examining tweets</b>
-1. Ran text mining programme on the scraped tweets, now sorted into separate csv files according to the time frame. I found <a href="https://eight2late.wordpress.com/2015/05/27/a-gentle-introduction-to-text-mining-using-r/">eight2late's introduction to text mining with R</a> the clearest and the most useful. I didn't use all of its suggestsions, such as stripping whitespace and 
-2. Downloaded data to csv files for further cleaning and analysis
+<i>Examining data</i>
+- Ran text mining and wordcloud programmes on the scraped tweets, now sorted into separate csv files according to the time frame. I found <a href="https://eight2late.wordpress.com/2015/05/27/a-gentle-introduction-to-text-mining-using-r/">eight2late's tutorial</a> the clearest and the most useful guide. <b>Script to be uploaded soon.</b>
+- Downloaded data as csv files for further cleaning and analysis
 
-<b>Outstanding tasks</b>
-- Clean and analyse popular words after running text mining programme
-- Think about front-end design: currently made a few raw graphs using ggplot; perhaps something interactive?
-- Create wordcloud
-
-<b>Stumbles</b> -> REWRITE
-- I specified in the package that I wanted 3,200 tweets (the maximum number of tweets that can be scraped) but could only get 839, between 29/9/2016 and 15/3/2017 for some reason, despite multiple attempts on separate packages and using different oAuth keys. (David Robinson also noted <a href="http://varianceexplained.org/r/trump-tweets/">in his scraping guide</a>: "We can reuest only 3200 tweest at a time; it will return fewer depending on the API.") Regardless, I got 839 tweets, which were enough for a quick analysis.
-- In an attempt to fix the above problem, I also tried to scrape the tweets using Python, using the <a href="https://www.buzzfeed.com/lamvo/the-twitterverse-of-donald-trump-in-26234-tweets?utm_term=.iwqa5vJlE#.nvnGmroWE">guide provided by BuzzFeed's Lam Thuy Vo</a> last December. Unfortunately, this was fruitless: the link to one of the scripts that she provided was broken, and my Terminal refused to install pip despite multiple attempts
-
-<i>Times updated: 25/3; 5/4</i>
+<i>Presenting data</i>
+- Currently ggplot scripts to visualise top mentions per period
+- Created interactive line graph via JavaScript and Highcharts documentation to visualise mentions of the media during each period (<a href="http://jsfiddle.net/alexandrama/zxbsvxhf/">script on JSFiddle</a>)
