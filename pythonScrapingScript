@@ -1,0 +1,1360 @@
+Last login: Thu Apr  6 15:24:47 on ttys000
+Alexandras-MacBook-Air-2:~ ama1$ curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1558k  100 1558k    0     0   651k      0  0:00:02  0:00:02 --:--:--  661k
+
+# instructions from https://github.com/bpb27/twitter_scraping
+
+# installing pip
+Alexandras-MacBook-Air-2:~ ama1$ sudo python get-pip.py
+Requirement already up-to-date: pip in /anaconda/lib/python3.6/site-packages
+
+# installing selenium (failed version)
+Alexandras-MacBook-Air-2:~ ama1$ pip3 install selenium
+Collecting selenium
+p  Downloading selenium-3.3.3-py2.py3-none-any.whl (931kB)
+    100% |████████████████████████████████| 931kB 588kB/s 
+Installing collected packages: selenium
+Exception:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/pip/basecommand.py", line 215, in main
+    status = self.run(options, args)
+  File "/usr/local/lib/python3.6/site-packages/pip/commands/install.py", line 342, in run
+    prefix=options.prefix_path,
+  File "/usr/local/lib/python3.6/site-packages/pip/req/req_set.py", line 784, in install
+    **kwargs
+  File "/usr/local/lib/python3.6/site-packages/pip/req/req_install.py", line 851, in install
+    self.move_wheel_files(self.source_dir, root=root, prefix=prefix)
+  File "/usr/local/lib/python3.6/site-packages/pip/req/req_install.py", line 1064, in move_wheel_files
+    isolated=self.isolated,
+  File "/usr/local/lib/python3.6/site-packages/pip/wheel.py", line 377, in move_wheel_files
+    clobber(source, dest, False, fixer=fixer, filter=filter)
+  File "/usr/local/lib/python3.6/site-packages/pip/wheel.py", line 316, in clobber
+    ensure_dir(destdir)
+  File "/usr/local/lib/python3.6/site-packages/pip/utils/__init__.py", line 83, in ensure_dir
+    os.makedirs(path)
+  File "/usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/os.py", line 210, in makedirs
+    makedirs(head, mode, exist_ok)
+  File "/usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/os.py", line 210, in makedirs
+    makedirs(head, mode, exist_ok)
+  File "/usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/os.py", line 210, in makedirs
+    makedirs(head, mode, exist_ok)
+  File "/usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/os.py", line 220, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '/usr/local/selenium'
+
+# installing tweepy
+Alexandras-MacBook-Air-2:~ ama1$ pip3 install tweepy
+Collecting tweepy
+  Downloading tweepy-3.5.0-py2.py3-none-any.whl
+Collecting six>=1.7.3 (from tweepy)
+  Downloading six-1.10.0-py2.py3-none-any.whl
+Collecting requests>=2.4.3 (from tweepy)
+  Downloading requests-2.13.0-py2.py3-none-any.whl (584kB)
+    100% |████████████████████████████████| 593kB 800kB/s 
+Collecting requests-oauthlib>=0.4.1 (from tweepy)
+  Downloading requests_oauthlib-0.8.0-py2.py3-none-any.whl
+Collecting oauthlib>=0.6.2 (from requests-oauthlib>=0.4.1->tweepy)
+  Downloading oauthlib-2.0.2.tar.gz (125kB)
+    100% |████████████████████████████████| 133kB 1.1MB/s 
+Building wheels for collected packages: oauthlib
+  Running setup.py bdist_wheel for oauthlib ... done
+  Stored in directory: /Users/ama1/Library/Caches/pip/wheels/84/98/7a/fba7268f61097bea6081cbe5480bc439b38975748ea7684fd5
+Successfully built oauthlib
+Installing collected packages: six, requests, oauthlib, requests-oauthlib, tweepy
+Successfully installed oauthlib-2.0.2 requests-2.13.0 requests-oauthlib-0.8.0 six-1.10.0 tweepy-3.5.0
+
+Alexandras-MacBook-Air-2:~ ama1$ cd /Users/ama1/Desktop
+
+# installing selenium
+Alexandras-MacBook-Air-2:Desktop ama1$ sudo pip install selenium
+Password:
+The directory '/Users/ama1/Library/Caches/pip/http' or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+The directory '/Users/ama1/Library/Caches/pip' or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+Collecting selenium
+  Downloading selenium-3.3.3-py2.py3-none-any.whl (931kB)
+    100% |████████████████████████████████| 931kB 309kB/s 
+Installing collected packages: selenium
+Successfully installed selenium-3.3.3
+
+# scraping!
+Alexandras-MacBook-Air-2:Desktop ama1$ python3 scrape.py
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-06%20until%3A2016-04-07include%3Aretweets&src=typd
+2016-04-06
+1 tweets found, 0 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-07%20until%3A2016-04-08include%3Aretweets&src=typd
+2016-04-07
+4 tweets found, 1 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-08%20until%3A2016-04-09include%3Aretweets&src=typd
+2016-04-08
+scrolling down to load more tweets
+13 tweets found, 5 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-09%20until%3A2016-04-10include%3Aretweets&src=typd
+2016-04-09
+scrolling down to load more tweets
+13 tweets found, 18 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-10%20until%3A2016-04-11include%3Aretweets&src=typd
+2016-04-10
+scrolling down to load more tweets
+15 tweets found, 31 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-11%20until%3A2016-04-12include%3Aretweets&src=typd
+2016-04-11
+scrolling down to load more tweets
+14 tweets found, 46 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-12%20until%3A2016-04-13include%3Aretweets&src=typd
+2016-04-12
+5 tweets found, 60 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-13%20until%3A2016-04-14include%3Aretweets&src=typd
+2016-04-13
+4 tweets found, 65 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-14%20until%3A2016-04-15include%3Aretweets&src=typd
+2016-04-14
+6 tweets found, 69 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-15%20until%3A2016-04-16include%3Aretweets&src=typd
+2016-04-15
+3 tweets found, 75 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-16%20until%3A2016-04-17include%3Aretweets&src=typd
+2016-04-16
+scrolling down to load more tweets
+14 tweets found, 78 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-17%20until%3A2016-04-18include%3Aretweets&src=typd
+2016-04-17
+scrolling down to load more tweets
+10 tweets found, 92 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-18%20until%3A2016-04-19include%3Aretweets&src=typd
+2016-04-18
+5 tweets found, 102 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-19%20until%3A2016-04-20include%3Aretweets&src=typd
+2016-04-19
+scrolling down to load more tweets
+15 tweets found, 107 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-20%20until%3A2016-04-21include%3Aretweets&src=typd
+2016-04-20
+scrolling down to load more tweets
+10 tweets found, 122 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-21%20until%3A2016-04-22include%3Aretweets&src=typd
+2016-04-21
+7 tweets found, 132 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-22%20until%3A2016-04-23include%3Aretweets&src=typd
+2016-04-22
+4 tweets found, 139 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-23%20until%3A2016-04-24include%3Aretweets&src=typd
+2016-04-23
+9 tweets found, 143 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-24%20until%3A2016-04-25include%3Aretweets&src=typd
+2016-04-24
+8 tweets found, 152 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-25%20until%3A2016-04-26include%3Aretweets&src=typd
+2016-04-25
+scrolling down to load more tweets
+10 tweets found, 160 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-26%20until%3A2016-04-27include%3Aretweets&src=typd
+2016-04-26
+scrolling down to load more tweets
+14 tweets found, 170 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-27%20until%3A2016-04-28include%3Aretweets&src=typd
+2016-04-27
+scrolling down to load more tweets
+13 tweets found, 184 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-28%20until%3A2016-04-29include%3Aretweets&src=typd
+2016-04-28
+scrolling down to load more tweets
+14 tweets found, 197 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-29%20until%3A2016-04-30include%3Aretweets&src=typd
+2016-04-29
+7 tweets found, 211 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-04-30%20until%3A2016-05-01include%3Aretweets&src=typd
+2016-04-30
+6 tweets found, 218 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-01%20until%3A2016-05-02include%3Aretweets&src=typd
+2016-05-01
+9 tweets found, 224 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-02%20until%3A2016-05-03include%3Aretweets&src=typd
+2016-05-02
+scrolling down to load more tweets
+11 tweets found, 233 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-03%20until%3A2016-05-04include%3Aretweets&src=typd
+2016-05-03
+scrolling down to load more tweets
+11 tweets found, 244 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-04%20until%3A2016-05-05include%3Aretweets&src=typd
+2016-05-04
+7 tweets found, 255 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-05%20until%3A2016-05-06include%3Aretweets&src=typd
+2016-05-05
+5 tweets found, 262 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-06%20until%3A2016-05-07include%3Aretweets&src=typd
+2016-05-06
+scrolling down to load more tweets
+15 tweets found, 267 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-07%20until%3A2016-05-08include%3Aretweets&src=typd
+2016-05-07
+8 tweets found, 282 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-08%20until%3A2016-05-09include%3Aretweets&src=typd
+2016-05-08
+7 tweets found, 290 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-09%20until%3A2016-05-10include%3Aretweets&src=typd
+2016-05-09
+scrolling down to load more tweets
+19 tweets found, 297 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-10%20until%3A2016-05-11include%3Aretweets&src=typd
+2016-05-10
+scrolling down to load more tweets
+14 tweets found, 316 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-11%20until%3A2016-05-12include%3Aretweets&src=typd
+2016-05-11
+scrolling down to load more tweets
+15 tweets found, 330 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-12%20until%3A2016-05-13include%3Aretweets&src=typd
+2016-05-12
+2 tweets found, 345 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-13%20until%3A2016-05-14include%3Aretweets&src=typd
+2016-05-13
+3 tweets found, 347 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-14%20until%3A2016-05-15include%3Aretweets&src=typd
+2016-05-14
+3 tweets found, 350 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-15%20until%3A2016-05-16include%3Aretweets&src=typd
+2016-05-15
+scrolling down to load more tweets
+14 tweets found, 353 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-16%20until%3A2016-05-17include%3Aretweets&src=typd
+2016-05-16
+scrolling down to load more tweets
+14 tweets found, 367 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-17%20until%3A2016-05-18include%3Aretweets&src=typd
+2016-05-17
+scrolling down to load more tweets
+18 tweets found, 381 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-18%20until%3A2016-05-19include%3Aretweets&src=typd
+2016-05-18
+scrolling down to load more tweets
+scrolling down to load more tweets
+scrolling down to load more tweets
+scrolling down to load more tweets
+41 tweets found, 399 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-19%20until%3A2016-05-20include%3Aretweets&src=typd
+2016-05-19
+5 tweets found, 440 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-20%20until%3A2016-05-21include%3Aretweets&src=typd
+2016-05-20
+scrolling down to load more tweets
+15 tweets found, 445 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-21%20until%3A2016-05-22include%3Aretweets&src=typd
+2016-05-21
+0 tweets found, 460 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-22%20until%3A2016-05-23include%3Aretweets&src=typd
+2016-05-22
+scrolling down to load more tweets
+10 tweets found, 460 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-23%20until%3A2016-05-24include%3Aretweets&src=typd
+2016-05-23
+4 tweets found, 470 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-24%20until%3A2016-05-25include%3Aretweets&src=typd
+2016-05-24
+scrolling down to load more tweets
+10 tweets found, 474 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-25%20until%3A2016-05-26include%3Aretweets&src=typd
+2016-05-25
+scrolling down to load more tweets
+18 tweets found, 484 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-26%20until%3A2016-05-27include%3Aretweets&src=typd
+2016-05-26
+0 tweets found, 502 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-27%20until%3A2016-05-28include%3Aretweets&src=typd
+2016-05-27
+5 tweets found, 502 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-28%20until%3A2016-05-29include%3Aretweets&src=typd
+2016-05-28
+scrolling down to load more tweets
+11 tweets found, 507 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-29%20until%3A2016-05-30include%3Aretweets&src=typd
+2016-05-29
+0 tweets found, 518 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-30%20until%3A2016-05-31include%3Aretweets&src=typd
+2016-05-30
+scrolling down to load more tweets
+13 tweets found, 518 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-05-31%20until%3A2016-06-01include%3Aretweets&src=typd
+2016-05-31
+9 tweets found, 531 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-01%20until%3A2016-06-02include%3Aretweets&src=typd
+2016-06-01
+3 tweets found, 540 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-02%20until%3A2016-06-03include%3Aretweets&src=typd
+2016-06-02
+0 tweets found, 543 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-03%20until%3A2016-06-04include%3Aretweets&src=typd
+2016-06-03
+scrolling down to load more tweets
+19 tweets found, 543 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-04%20until%3A2016-06-05include%3Aretweets&src=typd
+2016-06-04
+8 tweets found, 562 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-05%20until%3A2016-06-06include%3Aretweets&src=typd
+2016-06-05
+0 tweets found, 570 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-06%20until%3A2016-06-07include%3Aretweets&src=typd
+2016-06-06
+9 tweets found, 570 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-07%20until%3A2016-06-08include%3Aretweets&src=typd
+2016-06-07
+4 tweets found, 579 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-08%20until%3A2016-06-09include%3Aretweets&src=typd
+2016-06-08
+scrolling down to load more tweets
+17 tweets found, 583 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-09%20until%3A2016-06-10include%3Aretweets&src=typd
+2016-06-09
+0 tweets found, 600 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-10%20until%3A2016-06-11include%3Aretweets&src=typd
+2016-06-10
+scrolling down to load more tweets
+14 tweets found, 600 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-11%20until%3A2016-06-12include%3Aretweets&src=typd
+2016-06-11
+scrolling down to load more tweets
+11 tweets found, 614 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-12%20until%3A2016-06-13include%3Aretweets&src=typd
+2016-06-12
+8 tweets found, 625 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-13%20until%3A2016-06-14include%3Aretweets&src=typd
+2016-06-13
+0 tweets found, 633 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-14%20until%3A2016-06-15include%3Aretweets&src=typd
+2016-06-14
+6 tweets found, 633 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-15%20until%3A2016-06-16include%3Aretweets&src=typd
+2016-06-15
+8 tweets found, 639 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-16%20until%3A2016-06-17include%3Aretweets&src=typd
+2016-06-16
+6 tweets found, 647 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-17%20until%3A2016-06-18include%3Aretweets&src=typd
+2016-06-17
+scrolling down to load more tweets
+11 tweets found, 653 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-18%20until%3A2016-06-19include%3Aretweets&src=typd
+2016-06-18
+5 tweets found, 664 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-19%20until%3A2016-06-20include%3Aretweets&src=typd
+2016-06-19
+6 tweets found, 669 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-20%20until%3A2016-06-21include%3Aretweets&src=typd
+2016-06-20
+2 tweets found, 675 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-21%20until%3A2016-06-22include%3Aretweets&src=typd
+2016-06-21
+scrolling down to load more tweets
+12 tweets found, 677 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-22%20until%3A2016-06-23include%3Aretweets&src=typd
+2016-06-22
+5 tweets found, 689 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-23%20until%3A2016-06-24include%3Aretweets&src=typd
+2016-06-23
+5 tweets found, 694 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-24%20until%3A2016-06-25include%3Aretweets&src=typd
+2016-06-24
+scrolling down to load more tweets
+14 tweets found, 699 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-25%20until%3A2016-06-26include%3Aretweets&src=typd
+2016-06-25
+scrolling down to load more tweets
+5 tweets found, 713 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-26%20until%3A2016-06-27include%3Aretweets&src=typd
+2016-06-26
+scrolling down to load more tweets
+17 tweets found, 718 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-27%20until%3A2016-06-28include%3Aretweets&src=typd
+2016-06-27
+scrolling down to load more tweets
+6 tweets found, 735 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-28%20until%3A2016-06-29include%3Aretweets&src=typd
+2016-06-28
+scrolling down to load more tweets
+11 tweets found, 741 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-29%20until%3A2016-06-30include%3Aretweets&src=typd
+2016-06-29
+0 tweets found, 752 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-06-30%20until%3A2016-07-01include%3Aretweets&src=typd
+2016-06-30
+scrolling down to load more tweets
+11 tweets found, 752 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-01%20until%3A2016-07-02include%3Aretweets&src=typd
+2016-07-01
+scrolling down to load more tweets
+10 tweets found, 763 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-02%20until%3A2016-07-03include%3Aretweets&src=typd
+2016-07-02
+scrolling down to load more tweets
+13 tweets found, 773 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-03%20until%3A2016-07-04include%3Aretweets&src=typd
+2016-07-03
+8 tweets found, 786 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-04%20until%3A2016-07-05include%3Aretweets&src=typd
+2016-07-04
+scrolling down to load more tweets
+13 tweets found, 794 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-05%20until%3A2016-07-06include%3Aretweets&src=typd
+2016-07-05
+5 tweets found, 807 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-06%20until%3A2016-07-07include%3Aretweets&src=typd
+2016-07-06
+5 tweets found, 812 total
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-991EDF76-B9DD-4EED-8820-B3A4C387DC5A")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-B4270A70-D575-48B3-AD2D-DF78F1063CA1")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-CC88B3D4-BBA6-4794-B86F-5A4523B1F44F")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-9433CB86-F64C-428D-8631-AAA7CB7E0F84")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-3F9E2119-4AEF-4553-AE38-B2EC2A04E69E")>
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-07%20until%3A2016-07-08include%3Aretweets&src=typd
+2016-07-07
+6 tweets found, 812 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-08%20until%3A2016-07-09include%3Aretweets&src=typd
+2016-07-08
+6 tweets found, 818 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-09%20until%3A2016-07-10include%3Aretweets&src=typd
+2016-07-09
+6 tweets found, 824 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-10%20until%3A2016-07-11include%3Aretweets&src=typd
+2016-07-10
+4 tweets found, 830 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-11%20until%3A2016-07-12include%3Aretweets&src=typd
+2016-07-11
+4 tweets found, 834 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-12%20until%3A2016-07-13include%3Aretweets&src=typd
+2016-07-12
+scrolling down to load more tweets
+14 tweets found, 838 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-13%20until%3A2016-07-14include%3Aretweets&src=typd
+2016-07-13
+scrolling down to load more tweets
+15 tweets found, 852 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-14%20until%3A2016-07-15include%3Aretweets&src=typd
+2016-07-14
+6 tweets found, 867 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-15%20until%3A2016-07-16include%3Aretweets&src=typd
+2016-07-15
+4 tweets found, 873 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-16%20until%3A2016-07-17include%3Aretweets&src=typd
+2016-07-16
+7 tweets found, 877 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-17%20until%3A2016-07-18include%3Aretweets&src=typd
+2016-07-17
+scrolling down to load more tweets
+17 tweets found, 884 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-18%20until%3A2016-07-19include%3Aretweets&src=typd
+2016-07-18
+5 tweets found, 901 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-19%20until%3A2016-07-20include%3Aretweets&src=typd
+2016-07-19
+7 tweets found, 906 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-20%20until%3A2016-07-21include%3Aretweets&src=typd
+2016-07-20
+7 tweets found, 913 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-21%20until%3A2016-07-22include%3Aretweets&src=typd
+2016-07-21
+scrolling down to load more tweets
+17 tweets found, 920 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-22%20until%3A2016-07-23include%3Aretweets&src=typd
+2016-07-22
+7 tweets found, 937 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-23%20until%3A2016-07-24include%3Aretweets&src=typd
+2016-07-23
+scrolling down to load more tweets
+16 tweets found, 944 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-24%20until%3A2016-07-25include%3Aretweets&src=typd
+2016-07-24
+scrolling down to load more tweets
+18 tweets found, 960 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-25%20until%3A2016-07-26include%3Aretweets&src=typd
+2016-07-25
+scrolling down to load more tweets
+18 tweets found, 978 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-26%20until%3A2016-07-27include%3Aretweets&src=typd
+2016-07-26
+scrolling down to load more tweets
+15 tweets found, 996 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-27%20until%3A2016-07-28include%3Aretweets&src=typd
+2016-07-27
+scrolling down to load more tweets
+19 tweets found, 1011 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-28%20until%3A2016-07-29include%3Aretweets&src=typd
+2016-07-28
+scrolling down to load more tweets
+14 tweets found, 1030 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-29%20until%3A2016-07-30include%3Aretweets&src=typd
+2016-07-29
+scrolling down to load more tweets
+scrolling down to load more tweets
+24 tweets found, 1044 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-30%20until%3A2016-07-31include%3Aretweets&src=typd
+2016-07-30
+scrolling down to load more tweets
+scrolling down to load more tweets
+22 tweets found, 1068 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-07-31%20until%3A2016-08-01include%3Aretweets&src=typd
+2016-07-31
+5 tweets found, 1090 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-01%20until%3A2016-08-02include%3Aretweets&src=typd
+2016-08-01
+5 tweets found, 1095 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-02%20until%3A2016-08-03include%3Aretweets&src=typd
+2016-08-02
+5 tweets found, 1100 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-03%20until%3A2016-08-04include%3Aretweets&src=typd
+2016-08-03
+5 tweets found, 1105 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-04%20until%3A2016-08-05include%3Aretweets&src=typd
+2016-08-04
+5 tweets found, 1110 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-05%20until%3A2016-08-06include%3Aretweets&src=typd
+2016-08-05
+9 tweets found, 1115 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-06%20until%3A2016-08-07include%3Aretweets&src=typd
+2016-08-06
+8 tweets found, 1124 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-07%20until%3A2016-08-08include%3Aretweets&src=typd
+2016-08-07
+8 tweets found, 1132 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-08%20until%3A2016-08-09include%3Aretweets&src=typd
+2016-08-08
+8 tweets found, 1140 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-09%20until%3A2016-08-10include%3Aretweets&src=typd
+2016-08-09
+0 tweets found, 1148 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-10%20until%3A2016-08-11include%3Aretweets&src=typd
+2016-08-10
+0 tweets found, 1148 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-11%20until%3A2016-08-12include%3Aretweets&src=typd
+2016-08-11
+4 tweets found, 1148 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-12%20until%3A2016-08-13include%3Aretweets&src=typd
+2016-08-12
+scrolling down to load more tweets
+10 tweets found, 1152 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-13%20until%3A2016-08-14include%3Aretweets&src=typd
+2016-08-13
+scrolling down to load more tweets
+10 tweets found, 1162 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-14%20until%3A2016-08-15include%3Aretweets&src=typd
+2016-08-14
+8 tweets found, 1172 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-15%20until%3A2016-08-16include%3Aretweets&src=typd
+2016-08-15
+5 tweets found, 1180 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-16%20until%3A2016-08-17include%3Aretweets&src=typd
+2016-08-16
+4 tweets found, 1185 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-17%20until%3A2016-08-18include%3Aretweets&src=typd
+2016-08-17
+4 tweets found, 1189 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-18%20until%3A2016-08-19include%3Aretweets&src=typd
+2016-08-18
+3 tweets found, 1193 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-19%20until%3A2016-08-20include%3Aretweets&src=typd
+2016-08-19
+8 tweets found, 1196 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-20%20until%3A2016-08-21include%3Aretweets&src=typd
+2016-08-20
+8 tweets found, 1204 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-21%20until%3A2016-08-22include%3Aretweets&src=typd
+2016-08-21
+8 tweets found, 1212 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-22%20until%3A2016-08-23include%3Aretweets&src=typd
+2016-08-22
+8 tweets found, 1220 total
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-18F4B360-00D3-4B5D-A4AD-B73602F5E1BE")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-EE76E66C-C772-47BA-90A3-2A167F74AFA2")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-A8B4AEC8-6840-488E-9BA6-404E12549C88")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-70545111-596B-4B4A-BC67-8F2A76FBB092")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-6F1A712F-8A88-4717-B4C2-81EDA24C1790")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-0406EE5A-EF24-4681-8EF3-7F8BC3DB5B17")>
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-23%20until%3A2016-08-24include%3Aretweets&src=typd
+2016-08-23
+8 tweets found, 1222 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-24%20until%3A2016-08-25include%3Aretweets&src=typd
+2016-08-24
+8 tweets found, 1230 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-25%20until%3A2016-08-26include%3Aretweets&src=typd
+2016-08-25
+8 tweets found, 1238 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-26%20until%3A2016-08-27include%3Aretweets&src=typd
+2016-08-26
+8 tweets found, 1246 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-27%20until%3A2016-08-28include%3Aretweets&src=typd
+2016-08-27
+8 tweets found, 1254 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-28%20until%3A2016-08-29include%3Aretweets&src=typd
+2016-08-28
+8 tweets found, 1262 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-29%20until%3A2016-08-30include%3Aretweets&src=typd
+2016-08-29
+8 tweets found, 1270 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-30%20until%3A2016-08-31include%3Aretweets&src=typd
+2016-08-30
+8 tweets found, 1278 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-08-31%20until%3A2016-09-01include%3Aretweets&src=typd
+2016-08-31
+3 tweets found, 1286 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-01%20until%3A2016-09-02include%3Aretweets&src=typd
+2016-09-01
+scrolling down to load more tweets
+13 tweets found, 1289 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-02%20until%3A2016-09-03include%3Aretweets&src=typd
+2016-09-02
+5 tweets found, 1302 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-03%20until%3A2016-09-04include%3Aretweets&src=typd
+2016-09-03
+5 tweets found, 1307 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-04%20until%3A2016-09-05include%3Aretweets&src=typd
+2016-09-04
+6 tweets found, 1312 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-05%20until%3A2016-09-06include%3Aretweets&src=typd
+2016-09-05
+6 tweets found, 1318 total
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-A23D79E6-942E-45CA-BFFA-5F1E28982590")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-0A7B412A-0055-4E9F-B1C9-C8070934D90A")>
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-06%20until%3A2016-09-07include%3Aretweets&src=typd
+2016-09-06
+scrolling down to load more tweets
+10 tweets found, 1322 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-07%20until%3A2016-09-08include%3Aretweets&src=typd
+2016-09-07
+scrolling down to load more tweets
+7 tweets found, 1332 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-08%20until%3A2016-09-09include%3Aretweets&src=typd
+2016-09-08
+scrolling down to load more tweets
+12 tweets found, 1339 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-09%20until%3A2016-09-10include%3Aretweets&src=typd
+2016-09-09
+9 tweets found, 1351 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-10%20until%3A2016-09-11include%3Aretweets&src=typd
+2016-09-10
+scrolling down to load more tweets
+11 tweets found, 1360 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-11%20until%3A2016-09-12include%3Aretweets&src=typd
+2016-09-11
+2 tweets found, 1371 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-12%20until%3A2016-09-13include%3Aretweets&src=typd
+2016-09-12
+3 tweets found, 1373 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-13%20until%3A2016-09-14include%3Aretweets&src=typd
+2016-09-13
+3 tweets found, 1376 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-14%20until%3A2016-09-15include%3Aretweets&src=typd
+2016-09-14
+scrolling down to load more tweets
+11 tweets found, 1379 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-15%20until%3A2016-09-16include%3Aretweets&src=typd
+2016-09-15
+scrolling down to load more tweets
+14 tweets found, 1390 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-16%20until%3A2016-09-17include%3Aretweets&src=typd
+2016-09-16
+6 tweets found, 1404 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-17%20until%3A2016-09-18include%3Aretweets&src=typd
+2016-09-17
+scrolling down to load more tweets
+14 tweets found, 1410 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-18%20until%3A2016-09-19include%3Aretweets&src=typd
+2016-09-18
+2 tweets found, 1424 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-19%20until%3A2016-09-20include%3Aretweets&src=typd
+2016-09-19
+9 tweets found, 1426 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-20%20until%3A2016-09-21include%3Aretweets&src=typd
+2016-09-20
+scrolling down to load more tweets
+10 tweets found, 1435 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-21%20until%3A2016-09-22include%3Aretweets&src=typd
+2016-09-21
+6 tweets found, 1445 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-22%20until%3A2016-09-23include%3Aretweets&src=typd
+2016-09-22
+5 tweets found, 1451 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-23%20until%3A2016-09-24include%3Aretweets&src=typd
+2016-09-23
+6 tweets found, 1456 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-24%20until%3A2016-09-25include%3Aretweets&src=typd
+2016-09-24
+7 tweets found, 1462 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-25%20until%3A2016-09-26include%3Aretweets&src=typd
+2016-09-25
+4 tweets found, 1469 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-26%20until%3A2016-09-27include%3Aretweets&src=typd
+2016-09-26
+4 tweets found, 1473 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-27%20until%3A2016-09-28include%3Aretweets&src=typd
+2016-09-27
+scrolling down to load more tweets
+scrolling down to load more tweets
+scrolling down to load more tweets
+38 tweets found, 1477 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-28%20until%3A2016-09-29include%3Aretweets&src=typd
+2016-09-28
+scrolling down to load more tweets
+8 tweets found, 1515 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-29%20until%3A2016-09-30include%3Aretweets&src=typd
+2016-09-29
+8 tweets found, 1523 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-09-30%20until%3A2016-10-01include%3Aretweets&src=typd
+2016-09-30
+8 tweets found, 1531 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-01%20until%3A2016-10-02include%3Aretweets&src=typd
+2016-10-01
+5 tweets found, 1539 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-02%20until%3A2016-10-03include%3Aretweets&src=typd
+2016-10-02
+6 tweets found, 1544 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-03%20until%3A2016-10-04include%3Aretweets&src=typd
+2016-10-03
+3 tweets found, 1550 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-04%20until%3A2016-10-05include%3Aretweets&src=typd
+2016-10-04
+8 tweets found, 1553 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-05%20until%3A2016-10-06include%3Aretweets&src=typd
+2016-10-05
+scrolling down to load more tweets
+scrolling down to load more tweets
+scrolling down to load more tweets
+scrolling down to load more tweets
+43 tweets found, 1561 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-06%20until%3A2016-10-07include%3Aretweets&src=typd
+2016-10-06
+scrolling down to load more tweets
+11 tweets found, 1604 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-07%20until%3A2016-10-08include%3Aretweets&src=typd
+2016-10-07
+2 tweets found, 1615 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-08%20until%3A2016-10-09include%3Aretweets&src=typd
+2016-10-08
+3 tweets found, 1617 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-09%20until%3A2016-10-10include%3Aretweets&src=typd
+2016-10-09
+scrolling down to load more tweets
+13 tweets found, 1620 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-10%20until%3A2016-10-11include%3Aretweets&src=typd
+2016-10-10
+scrolling down to load more tweets
+scrolling down to load more tweets
+scrolling down to load more tweets
+37 tweets found, 1633 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-11%20until%3A2016-10-12include%3Aretweets&src=typd
+2016-10-11
+scrolling down to load more tweets
+15 tweets found, 1670 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-12%20until%3A2016-10-13include%3Aretweets&src=typd
+2016-10-12
+8 tweets found, 1685 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-13%20until%3A2016-10-14include%3Aretweets&src=typd
+2016-10-13
+scrolling down to load more tweets
+10 tweets found, 1693 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-14%20until%3A2016-10-15include%3Aretweets&src=typd
+2016-10-14
+4 tweets found, 1703 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-15%20until%3A2016-10-16include%3Aretweets&src=typd
+2016-10-15
+scrolling down to load more tweets
+12 tweets found, 1707 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-16%20until%3A2016-10-17include%3Aretweets&src=typd
+2016-10-16
+scrolling down to load more tweets
+19 tweets found, 1719 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-17%20until%3A2016-10-18include%3Aretweets&src=typd
+2016-10-17
+scrolling down to load more tweets
+scrolling down to load more tweets
+20 tweets found, 1738 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-18%20until%3A2016-10-19include%3Aretweets&src=typd
+2016-10-18
+scrolling down to load more tweets
+11 tweets found, 1758 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-19%20until%3A2016-10-20include%3Aretweets&src=typd
+2016-10-19
+7 tweets found, 1769 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-20%20until%3A2016-10-21include%3Aretweets&src=typd
+2016-10-20
+scrolling down to load more tweets
+scrolling down to load more tweets
+scrolling down to load more tweets
+scrolling down to load more tweets
+scrolling down to load more tweets
+scrolling down to load more tweets
+scrolling down to load more tweets
+72 tweets found, 1776 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-21%20until%3A2016-10-22include%3Aretweets&src=typd
+2016-10-21
+0 tweets found, 1848 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-22%20until%3A2016-10-23include%3Aretweets&src=typd
+2016-10-22
+scrolling down to load more tweets
+16 tweets found, 1848 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-23%20until%3A2016-10-24include%3Aretweets&src=typd
+2016-10-23
+scrolling down to load more tweets
+12 tweets found, 1864 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-24%20until%3A2016-10-25include%3Aretweets&src=typd
+2016-10-24
+5 tweets found, 1876 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-25%20until%3A2016-10-26include%3Aretweets&src=typd
+2016-10-25
+scrolling down to load more tweets
+scrolling down to load more tweets
+20 tweets found, 1881 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-26%20until%3A2016-10-27include%3Aretweets&src=typd
+2016-10-26
+3 tweets found, 1901 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-27%20until%3A2016-10-28include%3Aretweets&src=typd
+2016-10-27
+scrolling down to load more tweets
+19 tweets found, 1904 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-28%20until%3A2016-10-29include%3Aretweets&src=typd
+2016-10-28
+8 tweets found, 1923 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-29%20until%3A2016-10-30include%3Aretweets&src=typd
+2016-10-29
+scrolling down to load more tweets
+10 tweets found, 1931 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-30%20until%3A2016-10-31include%3Aretweets&src=typd
+2016-10-30
+9 tweets found, 1941 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-10-31%20until%3A2016-11-01include%3Aretweets&src=typd
+2016-10-31
+8 tweets found, 1950 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-01%20until%3A2016-11-02include%3Aretweets&src=typd
+2016-11-01
+scrolling down to load more tweets
+13 tweets found, 1958 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-02%20until%3A2016-11-03include%3Aretweets&src=typd
+2016-11-02
+0 tweets found, 1971 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-03%20until%3A2016-11-04include%3Aretweets&src=typd
+2016-11-03
+8 tweets found, 1971 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-04%20until%3A2016-11-05include%3Aretweets&src=typd
+2016-11-04
+scrolling down to load more tweets
+11 tweets found, 1979 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-05%20until%3A2016-11-06include%3Aretweets&src=typd
+2016-11-05
+9 tweets found, 1990 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-06%20until%3A2016-11-07include%3Aretweets&src=typd
+2016-11-06
+8 tweets found, 1999 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-07%20until%3A2016-11-08include%3Aretweets&src=typd
+2016-11-07
+scrolling down to load more tweets
+13 tweets found, 2007 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-08%20until%3A2016-11-09include%3Aretweets&src=typd
+2016-11-08
+scrolling down to load more tweets
+13 tweets found, 2020 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-09%20until%3A2016-11-10include%3Aretweets&src=typd
+2016-11-09
+2 tweets found, 2033 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-10%20until%3A2016-11-11include%3Aretweets&src=typd
+2016-11-10
+1 tweets found, 2035 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-11%20until%3A2016-11-12include%3Aretweets&src=typd
+2016-11-11
+5 tweets found, 2036 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-12%20until%3A2016-11-13include%3Aretweets&src=typd
+2016-11-12
+1 tweets found, 2041 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-13%20until%3A2016-11-14include%3Aretweets&src=typd
+2016-11-13
+8 tweets found, 2042 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-14%20until%3A2016-11-15include%3Aretweets&src=typd
+2016-11-14
+0 tweets found, 2050 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-15%20until%3A2016-11-16include%3Aretweets&src=typd
+2016-11-15
+2 tweets found, 2050 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-16%20until%3A2016-11-17include%3Aretweets&src=typd
+2016-11-16
+5 tweets found, 2052 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-17%20until%3A2016-11-18include%3Aretweets&src=typd
+2016-11-17
+1 tweets found, 2057 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-18%20until%3A2016-11-19include%3Aretweets&src=typd
+2016-11-18
+3 tweets found, 2058 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-19%20until%3A2016-11-20include%3Aretweets&src=typd
+2016-11-19
+4 tweets found, 2061 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-20%20until%3A2016-11-21include%3Aretweets&src=typd
+2016-11-20
+5 tweets found, 2065 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-21%20until%3A2016-11-22include%3Aretweets&src=typd
+2016-11-21
+1 tweets found, 2070 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-22%20until%3A2016-11-23include%3Aretweets&src=typd
+2016-11-22
+scrolling down to load more tweets
+10 tweets found, 2071 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-23%20until%3A2016-11-24include%3Aretweets&src=typd
+2016-11-23
+1 tweets found, 2081 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-24%20until%3A2016-11-25include%3Aretweets&src=typd
+2016-11-24
+3 tweets found, 2082 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-25%20until%3A2016-11-26include%3Aretweets&src=typd
+2016-11-25
+0 tweets found, 2085 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-26%20until%3A2016-11-27include%3Aretweets&src=typd
+2016-11-26
+1 tweets found, 2085 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-27%20until%3A2016-11-28include%3Aretweets&src=typd
+2016-11-27
+scrolling down to load more tweets
+12 tweets found, 2086 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-28%20until%3A2016-11-29include%3Aretweets&src=typd
+2016-11-28
+3 tweets found, 2098 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-29%20until%3A2016-11-30include%3Aretweets&src=typd
+2016-11-29
+scrolling down to load more tweets
+11 tweets found, 2101 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-11-30%20until%3A2016-12-01include%3Aretweets&src=typd
+2016-11-30
+scrolling down to load more tweets
+10 tweets found, 2112 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-01%20until%3A2016-12-02include%3Aretweets&src=typd
+2016-12-01
+4 tweets found, 2122 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-02%20until%3A2016-12-03include%3Aretweets&src=typd
+2016-12-02
+1 tweets found, 2126 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-03%20until%3A2016-12-04include%3Aretweets&src=typd
+2016-12-03
+6 tweets found, 2127 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-04%20until%3A2016-12-05include%3Aretweets&src=typd
+2016-12-04
+scrolling down to load more tweets
+11 tweets found, 2133 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-05%20until%3A2016-12-06include%3Aretweets&src=typd
+2016-12-05
+3 tweets found, 2144 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-06%20until%3A2016-12-07include%3Aretweets&src=typd
+2016-12-06
+1 tweets found, 2147 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-07%20until%3A2016-12-08include%3Aretweets&src=typd
+2016-12-07
+0 tweets found, 2148 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-08%20until%3A2016-12-09include%3Aretweets&src=typd
+2016-12-08
+5 tweets found, 2148 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-09%20until%3A2016-12-10include%3Aretweets&src=typd
+2016-12-09
+3 tweets found, 2153 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-10%20until%3A2016-12-11include%3Aretweets&src=typd
+2016-12-10
+7 tweets found, 2156 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-11%20until%3A2016-12-12include%3Aretweets&src=typd
+2016-12-11
+0 tweets found, 2163 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-12%20until%3A2016-12-13include%3Aretweets&src=typd
+2016-12-12
+7 tweets found, 2163 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-13%20until%3A2016-12-14include%3Aretweets&src=typd
+2016-12-13
+8 tweets found, 2170 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-14%20until%3A2016-12-15include%3Aretweets&src=typd
+2016-12-14
+2 tweets found, 2178 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-15%20until%3A2016-12-16include%3Aretweets&src=typd
+2016-12-15
+0 tweets found, 2180 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-16%20until%3A2016-12-17include%3Aretweets&src=typd
+2016-12-16
+0 tweets found, 2180 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-17%20until%3A2016-12-18include%3Aretweets&src=typd
+2016-12-17
+5 tweets found, 2180 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-18%20until%3A2016-12-19include%3Aretweets&src=typd
+2016-12-18
+3 tweets found, 2185 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-19%20until%3A2016-12-20include%3Aretweets&src=typd
+2016-12-19
+2 tweets found, 2188 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-20%20until%3A2016-12-21include%3Aretweets&src=typd
+2016-12-20
+2 tweets found, 2190 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-21%20until%3A2016-12-22include%3Aretweets&src=typd
+2016-12-21
+3 tweets found, 2192 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-22%20until%3A2016-12-23include%3Aretweets&src=typd
+2016-12-22
+5 tweets found, 2195 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-23%20until%3A2016-12-24include%3Aretweets&src=typd
+2016-12-23
+0 tweets found, 2200 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-24%20until%3A2016-12-25include%3Aretweets&src=typd
+2016-12-24
+0 tweets found, 2200 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-25%20until%3A2016-12-26include%3Aretweets&src=typd
+2016-12-25
+2 tweets found, 2200 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-26%20until%3A2016-12-27include%3Aretweets&src=typd
+2016-12-26
+3 tweets found, 2202 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-27%20until%3A2016-12-28include%3Aretweets&src=typd
+2016-12-27
+0 tweets found, 2205 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-28%20until%3A2016-12-29include%3Aretweets&src=typd
+2016-12-28
+0 tweets found, 2205 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-29%20until%3A2016-12-30include%3Aretweets&src=typd
+2016-12-29
+1 tweets found, 2205 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-30%20until%3A2016-12-31include%3Aretweets&src=typd
+2016-12-30
+3 tweets found, 2206 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2016-12-31%20until%3A2017-01-01include%3Aretweets&src=typd
+2016-12-31
+2 tweets found, 2209 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-01%20until%3A2017-01-02include%3Aretweets&src=typd
+2017-01-01
+1 tweets found, 2211 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-02%20until%3A2017-01-03include%3Aretweets&src=typd
+2017-01-02
+1 tweets found, 2212 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-03%20until%3A2017-01-04include%3Aretweets&src=typd
+2017-01-03
+scrolling down to load more tweets
+10 tweets found, 2213 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-04%20until%3A2017-01-05include%3Aretweets&src=typd
+2017-01-04
+0 tweets found, 2223 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-05%20until%3A2017-01-06include%3Aretweets&src=typd
+2017-01-05
+0 tweets found, 2223 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-06%20until%3A2017-01-07include%3Aretweets&src=typd
+2017-01-06
+scrolling down to load more tweets
+12 tweets found, 2223 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-07%20until%3A2017-01-08include%3Aretweets&src=typd
+2017-01-07
+8 tweets found, 2235 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-08%20until%3A2017-01-09include%3Aretweets&src=typd
+2017-01-08
+5 tweets found, 2243 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-09%20until%3A2017-01-10include%3Aretweets&src=typd
+2017-01-09
+8 tweets found, 2248 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-10%20until%3A2017-01-11include%3Aretweets&src=typd
+2017-01-10
+8 tweets found, 2256 total
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-5DF2D248-2BB9-4E40-82CF-5397DF13B9C6")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-6E95CA2E-BDE2-4B1F-9DA7-488D41E52C89")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-C15E7A66-52CF-4F0D-BAC4-2C0BB6E4B99D")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-ACF4CCA5-EC6D-4307-BB19-A9D992480C13")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-305673D6-205A-475E-90A3-126443BD5E09")>
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-11%20until%3A2017-01-12include%3Aretweets&src=typd
+2017-01-11
+6 tweets found, 2259 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-12%20until%3A2017-01-13include%3Aretweets&src=typd
+2017-01-12
+6 tweets found, 2265 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-13%20until%3A2017-01-14include%3Aretweets&src=typd
+2017-01-13
+0 tweets found, 2271 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-14%20until%3A2017-01-15include%3Aretweets&src=typd
+2017-01-14
+3 tweets found, 2271 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-15%20until%3A2017-01-16include%3Aretweets&src=typd
+2017-01-15
+8 tweets found, 2274 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-16%20until%3A2017-01-17include%3Aretweets&src=typd
+2017-01-16
+3 tweets found, 2282 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-17%20until%3A2017-01-18include%3Aretweets&src=typd
+2017-01-17
+3 tweets found, 2285 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-18%20until%3A2017-01-19include%3Aretweets&src=typd
+2017-01-18
+8 tweets found, 2288 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-19%20until%3A2017-01-20include%3Aretweets&src=typd
+2017-01-19
+8 tweets found, 2296 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-20%20until%3A2017-01-21include%3Aretweets&src=typd
+2017-01-20
+scrolling down to load more tweets
+13 tweets found, 2304 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-21%20until%3A2017-01-22include%3Aretweets&src=typd
+2017-01-21
+1 tweets found, 2317 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-22%20until%3A2017-01-23include%3Aretweets&src=typd
+2017-01-22
+4 tweets found, 2318 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-23%20until%3A2017-01-24include%3Aretweets&src=typd
+2017-01-23
+1 tweets found, 2322 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-24%20until%3A2017-01-25include%3Aretweets&src=typd
+2017-01-24
+4 tweets found, 2323 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-25%20until%3A2017-01-26include%3Aretweets&src=typd
+2017-01-25
+4 tweets found, 2327 total
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-B3FF6FD5-B5CD-4E6D-AA9D-849FDC1E6034")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-DDE71F2A-6DC3-46ED-8085-96E50DD865F8")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-74CB80D1-BEA1-40F7-ADE7-DE88B767F042")>
+lost element reference <selenium.webdriver.remote.webelement.WebElement (session="A34E4A24-BA3D-4F5D-8541-87E5A6696BE6", element="node-DF37E097-B24D-493E-9CE2-1C6EFA440CA6")>
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-26%20until%3A2017-01-27include%3Aretweets&src=typd
+2017-01-26
+scrolling down to load more tweets
+10 tweets found, 2327 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-27%20until%3A2017-01-28include%3Aretweets&src=typd
+2017-01-27
+scrolling down to load more tweets
+6 tweets found, 2337 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-28%20until%3A2017-01-29include%3Aretweets&src=typd
+2017-01-28
+4 tweets found, 2343 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-29%20until%3A2017-01-30include%3Aretweets&src=typd
+2017-01-29
+0 tweets found, 2347 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-30%20until%3A2017-01-31include%3Aretweets&src=typd
+2017-01-30
+7 tweets found, 2347 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-01-31%20until%3A2017-02-01include%3Aretweets&src=typd
+2017-01-31
+3 tweets found, 2354 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-01%20until%3A2017-02-02include%3Aretweets&src=typd
+2017-02-01
+4 tweets found, 2357 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-02%20until%3A2017-02-03include%3Aretweets&src=typd
+2017-02-02
+8 tweets found, 2361 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-03%20until%3A2017-02-04include%3Aretweets&src=typd
+2017-02-03
+0 tweets found, 2369 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-04%20until%3A2017-02-05include%3Aretweets&src=typd
+2017-02-04
+0 tweets found, 2369 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-05%20until%3A2017-02-06include%3Aretweets&src=typd
+2017-02-05
+5 tweets found, 2369 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-06%20until%3A2017-02-07include%3Aretweets&src=typd
+2017-02-06
+5 tweets found, 2374 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-07%20until%3A2017-02-08include%3Aretweets&src=typd
+2017-02-07
+0 tweets found, 2379 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-08%20until%3A2017-02-09include%3Aretweets&src=typd
+2017-02-08
+scrolling down to load more tweets
+11 tweets found, 2379 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-09%20until%3A2017-02-10include%3Aretweets&src=typd
+2017-02-09
+8 tweets found, 2390 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-10%20until%3A2017-02-11include%3Aretweets&src=typd
+2017-02-10
+8 tweets found, 2398 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-11%20until%3A2017-02-12include%3Aretweets&src=typd
+2017-02-11
+8 tweets found, 2406 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-12%20until%3A2017-02-13include%3Aretweets&src=typd
+2017-02-12
+8 tweets found, 2414 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-13%20until%3A2017-02-14include%3Aretweets&src=typd
+2017-02-13
+8 tweets found, 2422 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-14%20until%3A2017-02-15include%3Aretweets&src=typd
+2017-02-14
+8 tweets found, 2430 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-15%20until%3A2017-02-16include%3Aretweets&src=typd
+2017-02-15
+scrolling down to load more tweets
+11 tweets found, 2438 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-16%20until%3A2017-02-17include%3Aretweets&src=typd
+2017-02-16
+6 tweets found, 2449 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-17%20until%3A2017-02-18include%3Aretweets&src=typd
+2017-02-17
+7 tweets found, 2455 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-18%20until%3A2017-02-19include%3Aretweets&src=typd
+2017-02-18
+3 tweets found, 2462 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-19%20until%3A2017-02-20include%3Aretweets&src=typd
+2017-02-19
+1 tweets found, 2465 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-20%20until%3A2017-02-21include%3Aretweets&src=typd
+2017-02-20
+3 tweets found, 2466 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-21%20until%3A2017-02-22include%3Aretweets&src=typd
+2017-02-21
+3 tweets found, 2469 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-22%20until%3A2017-02-23include%3Aretweets&src=typd
+2017-02-22
+2 tweets found, 2472 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-23%20until%3A2017-02-24include%3Aretweets&src=typd
+2017-02-23
+1 tweets found, 2474 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-24%20until%3A2017-02-25include%3Aretweets&src=typd
+2017-02-24
+0 tweets found, 2475 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-25%20until%3A2017-02-26include%3Aretweets&src=typd
+2017-02-25
+7 tweets found, 2475 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-26%20until%3A2017-02-27include%3Aretweets&src=typd
+2017-02-26
+4 tweets found, 2482 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-27%20until%3A2017-02-28include%3Aretweets&src=typd
+2017-02-27
+4 tweets found, 2486 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-02-28%20until%3A2017-03-01include%3Aretweets&src=typd
+2017-02-28
+1 tweets found, 2490 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-01%20until%3A2017-03-02include%3Aretweets&src=typd
+2017-03-01
+3 tweets found, 2491 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-02%20until%3A2017-03-03include%3Aretweets&src=typd
+2017-03-02
+3 tweets found, 2494 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-03%20until%3A2017-03-04include%3Aretweets&src=typd
+2017-03-03
+scrolling down to load more tweets
+11 tweets found, 2497 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-04%20until%3A2017-03-05include%3Aretweets&src=typd
+2017-03-04
+7 tweets found, 2508 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-05%20until%3A2017-03-06include%3Aretweets&src=typd
+2017-03-05
+3 tweets found, 2515 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-06%20until%3A2017-03-07include%3Aretweets&src=typd
+2017-03-06
+3 tweets found, 2518 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-07%20until%3A2017-03-08include%3Aretweets&src=typd
+2017-03-07
+8 tweets found, 2521 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-08%20until%3A2017-03-09include%3Aretweets&src=typd
+2017-03-08
+6 tweets found, 2529 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-09%20until%3A2017-03-10include%3Aretweets&src=typd
+2017-03-09
+2 tweets found, 2535 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-10%20until%3A2017-03-11include%3Aretweets&src=typd
+2017-03-10
+1 tweets found, 2537 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-11%20until%3A2017-03-12include%3Aretweets&src=typd
+2017-03-11
+1 tweets found, 2538 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-12%20until%3A2017-03-13include%3Aretweets&src=typd
+2017-03-12
+0 tweets found, 2539 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-13%20until%3A2017-03-14include%3Aretweets&src=typd
+2017-03-13
+0 tweets found, 2539 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-14%20until%3A2017-03-15include%3Aretweets&src=typd
+2017-03-14
+0 tweets found, 2539 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-15%20until%3A2017-03-16include%3Aretweets&src=typd
+2017-03-15
+7 tweets found, 2539 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-16%20until%3A2017-03-17include%3Aretweets&src=typd
+2017-03-16
+6 tweets found, 2546 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-17%20until%3A2017-03-18include%3Aretweets&src=typd
+2017-03-17
+6 tweets found, 2552 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-18%20until%3A2017-03-19include%3Aretweets&src=typd
+2017-03-18
+2 tweets found, 2558 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-19%20until%3A2017-03-20include%3Aretweets&src=typd
+2017-03-19
+1 tweets found, 2560 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-20%20until%3A2017-03-21include%3Aretweets&src=typd
+2017-03-20
+1 tweets found, 2561 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-21%20until%3A2017-03-22include%3Aretweets&src=typd
+2017-03-21
+1 tweets found, 2562 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-22%20until%3A2017-03-23include%3Aretweets&src=typd
+2017-03-22
+1 tweets found, 2563 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-23%20until%3A2017-03-24include%3Aretweets&src=typd
+2017-03-23
+5 tweets found, 2564 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-24%20until%3A2017-03-25include%3Aretweets&src=typd
+2017-03-24
+4 tweets found, 2569 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-25%20until%3A2017-03-26include%3Aretweets&src=typd
+2017-03-25
+4 tweets found, 2573 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-26%20until%3A2017-03-27include%3Aretweets&src=typd
+2017-03-26
+4 tweets found, 2577 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-27%20until%3A2017-03-28include%3Aretweets&src=typd
+2017-03-27
+1 tweets found, 2581 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-28%20until%3A2017-03-29include%3Aretweets&src=typd
+2017-03-28
+9 tweets found, 2582 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-29%20until%3A2017-03-30include%3Aretweets&src=typd
+2017-03-29
+4 tweets found, 2591 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-30%20until%3A2017-03-31include%3Aretweets&src=typd
+2017-03-30
+4 tweets found, 2595 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-03-31%20until%3A2017-04-01include%3Aretweets&src=typd
+2017-03-31
+8 tweets found, 2599 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-04-01%20until%3A2017-04-02include%3Aretweets&src=typd
+2017-04-01
+8 tweets found, 2607 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-04-02%20until%3A2017-04-03include%3Aretweets&src=typd
+2017-04-02
+3 tweets found, 2615 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-04-03%20until%3A2017-04-04include%3Aretweets&src=typd
+2017-04-03
+8 tweets found, 2618 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-04-04%20until%3A2017-04-05include%3Aretweets&src=typd
+2017-04-04
+8 tweets found, 2626 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-04-05%20until%3A2017-04-06include%3Aretweets&src=typd
+2017-04-05
+8 tweets found, 2634 total
+https://twitter.com/search?f=tweets&vertical=default&q=from%3Arealdonaldtrump%20since%3A2017-04-06%20until%3A2017-04-07include%3Aretweets&src=typd
+2017-04-06
+1 tweets found, 2642 total
+tweets found on this scrape:  2643
+total tweet count:  2426
+all done here
+
+# getting the metadata!
+Alexandras-MacBook-Air-2:Desktop ama1$ python3 get_metadata.py
+total ids: 2426
+currently getting 0 - 100
+currently getting 100 - 200
+currently getting 200 - 300
+currently getting 300 - 400
+currently getting 400 - 500
+currently getting 500 - 600
+currently getting 600 - 700
+currently getting 700 - 800
+currently getting 800 - 900
+currently getting 900 - 1000
+currently getting 1000 - 1100
+currently getting 1100 - 1200
+currently getting 1200 - 1300
+currently getting 1300 - 1400
+currently getting 1400 - 1500
+currently getting 1500 - 1600
+currently getting 1600 - 1700
+currently getting 1700 - 1800
+currently getting 1800 - 1900
+currently getting 1900 - 2000
+currently getting 2000 - 2100
+currently getting 2100 - 2200
+currently getting 2200 - 2300
+currently getting 2300 - 2400
+currently getting 2400 - 2500
+metadata collection complete
+creating master json file
+creating ziped master json file
+creating minimized json master file
+creating CSV version of minimized json master file
