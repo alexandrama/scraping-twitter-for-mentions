@@ -19,4 +19,4 @@ Here's how I did it. (You can use the attached scripts for whatever account you 
 
 <i>Presenting data</i>
 - Currently ggplot scripts to visualise top mentions per period
-- Created interactive line graph via JavaScript and Highcharts documentation to visualise mentions of the media during each period: (<a href="http://jsfiddle.net/alexandrama/zxbsvxhf/">script on JSFiddle</a>)
+- Created interactive line graph via JavaScript and Highcharts documentation to visualise mentions of the media during each period: <a href="http://jsfiddle.net/alexandrama/zxbsvxhf/">script available on JSFiddle</a>
