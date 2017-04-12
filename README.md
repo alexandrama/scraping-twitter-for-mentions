@@ -1,4 +1,4 @@
-# twitterEnemies
+# @realDonaldTrump's top mentions
 
 I wanted to run a meaningful analysis of @realDonaldTrump's frequently used words when he was tweeting as presidential candidate, president-elect and president. I also wanted to find out, if applicable, whether he had different "enemies" during these three periods.
 
@@ -19,4 +19,4 @@ Here's how I did it.
 
 <i>Presenting data</i>
 - Currently ggplot scripts to visualise top mentions per period
-- Created interactive line graph via JavaScript and Highcharts documentation to visualise mentions of the media during each period (<a href="http://jsfiddle.net/alexandrama/zxbsvxhf/">script on JSFiddle</a>)
+- Created interactive line graph via JavaScript and Highcharts documentation to visualise mentions of the media during each period: (<a href="http://jsfiddle.net/alexandrama/zxbsvxhf/">script on JSFiddle</a>)
