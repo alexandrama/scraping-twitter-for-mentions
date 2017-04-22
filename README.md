@@ -2,7 +2,7 @@
 
 I wanted to run a meaningful analysis of @realDonaldTrump's frequently used words when he was tweeting as presidential candidate, president-elect and president. I also wanted to find out, if applicable, whether he had different "enemies" during these three periods.
 
-Here's how I did it. (You can use the attached scripts for whatever account you want to scrape -- just make sure to change the Twitter account name and date ranges.)
+Here's how I did it.
 
 <i>Scraping and cleaning tweets:</i>
 - Got Twitter oAuth access via <a href="https://apps.twitter.com/">apps.twitter.com</a>
