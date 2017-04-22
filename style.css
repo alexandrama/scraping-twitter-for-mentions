@@ -1,0 +1,77 @@
+h2 {
+	font-family: Helvetica;
+	color: blue;
+}
+
+body {
+	font-family: Helvetica;
+	font-size: 12px;
+	display: inline-block;
+	width: 800px;
+	padding: 20px 30px;
+	text-align: justify;
+	padding: 5px;
+	word-wrap: break-word;
+}
+
+img {
+	height: 25px;
+	width: 30px;
+}
+
+a {
+	text-decoration: none;
+	color: red;
+}
+
+a:hover {
+	color: blue;
+}
+
+#mentions {
+	height: 600px
+	width: 800px;
+	border: 1px solid gray;
+	padding: 10px;
+}
+
+#container {
+	height: 400px;
+	width: 800px;
+	border: 1px solid gray;
+}
+
+#mentions {
+	font-family: Helvetica;
+}
+
+button {
+  padding: 20px;
+  margin: auto;
+  text-align: center;
+  white-space; nowrap;
+  width: auto;
+  height: auto;
+  font-size: 14px;
+  font-family: Helvetica;
+}
+
+#btnCandidate {
+  background: red;
+  color: white;
+}
+
+#btnPotus {
+  background: blue;
+  color: white;
+}
+
+#placeholder {
+  width: 600px;
+  height: 400px;
+}
+
+footer {
+	font-size: 10px;
+	line-height: 0.1;
+}
