@@ -1,8 +1,8 @@
 # @realDonaldTrump's top mentions
 
-I wanted to run a meaningful analysis of @realDonaldTrump's frequently used words when he was tweeting as presidential candidate, president-elect and president. I also wanted to find out, if applicable, whether he had different "enemies" during these three periods.
+I wanted to run a meaningful analysis of @realDonaldTrump's frequently used words when he was tweeting as presidential candidate, president-elect and president.
 
-Here's how I did it.
+Here's how I did it. (And <a href="https://alexandrama.github.io/trump-frequent-mentions/">here's what I found out</a>.)
 
 <i>Scraping and cleaning tweets:</i>
 - Got Twitter oAuth access via <a href="https://apps.twitter.com/">apps.twitter.com</a>
