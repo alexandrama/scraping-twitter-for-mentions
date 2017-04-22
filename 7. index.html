@@ -14,170 +14,174 @@
 
 <body>
 
-	<h2>just another trump twitter analysis</h2>
+	<div id="bodytext">
 
-	<p>This project explores the most frequently used words from <a href="https://twitter.com/realdonaldtrump" target="_blank">Donald Trump's Twitter account</a>. It aims to find the most frequently used words when Trump was tweeting as Republican candidate, president-elect and president.</p>
+		<h2>just another trump twitter analysis</h2>
 
-	<p><h4>METHODOLOGY</h4></p>
+		<p>This project explores the most frequently used words from <a href="https://twitter.com/realdonaldtrump" target="_blank">Donald Trump's Twitter account</a>. It aims to find the most frequently used words when Trump was tweeting as Republican candidate, president-elect and president.</p>
 
-	<p>I used a combination of R and Python packages to scrape the tweets from Twitter. I then divided the tweets into three timeframes: those written when Trump was candidate (from 6 Oct 2016 to 8 Nov 2016), president-elect (from 9 Nov 2016 to 20 Jan 2017 -- around the time Trump took the presidential oath, to be precise) and president (everything else up to 15 Mar 2017). The total number of tweets came up to about 160.</p>
+		<p><h4>METHODOLOGY</h4></p>
 
-	<p>I then ran text mining and wordcloud programmes in R for my analysis.</p>
+		<p>I used a combination of R and Python packages to scrape the tweets from Twitter. I then divided the tweets into three timeframes: those written when Trump was candidate (from 6 Oct 2016 to 8 Nov 2016), president-elect (from 9 Nov 2016 to 20 Jan 2017 -- around the time Trump took the presidential oath, to be precise) and president (everything else up to 15 Mar 2017). The total number of tweets came up to about 160.</p>
 
-	<p><a href="https://github.com/alexandrama/scraping-twitter-for-mentions" target="_blank">Visit my "behind the scenes" GitHub repo to see the methodology, code and data in full</a>.</p>
+		<p>I then ran text mining and wordcloud programmes in R for my analysis.</p>
 
-	<p><h4>RESULTS</h4></p>
+		<p><a href="https://github.com/alexandrama/scraping-twitter-for-mentions" target="_blank">Visit my "behind the scenes" GitHub repo to see the methodology, code and data in full</a>.</p>
 
-	<p>I found, unsurprisingly, that "Hillary" and "Clinton" were the most frequently mentioned words when Candidate was tweeting. Combative words and phrases like "drain the swamp", "Make America Great Again" (which were popular hashtags among Trump supporters), and "crook" also featured heavily.</p>
+		<p><h4>RESULTS</h4></p>
 
-	<p>President-elect Trump took on a calmer tone as he embarked on his Thank You Tour. Neutral words like "thank", "state", "president" and "elect" featured heavily during this period. The word "us", surprisingly, was also used often, striking an inclusive tone.</p>
+		<p>I found, unsurprisingly, that "Hillary" and "Clinton" were the most frequently mentioned words when Candidate was tweeting. Combative words and phrases like "drain the swamp", "Make America Great Again" (which were popular hashtags among Trump supporters), and "crook" also featured heavily.</p>
 
-	<p>Familiar campaign buzzwords like "make", "America" and "great" featured heavily in President Trump's tweets. Mentions of important topic areas such as jobs and Trump's new frenemy, the media, also rocketed during this time frame.</p>
+		<p>President-elect Trump took on a calmer tone as he embarked on his Thank You Tour. Neutral words like "thank", "state", "president" and "elect" featured heavily during this period. The word "us", surprisingly, was also used often, striking an inclusive tone.</p>
 
-	<p>The word "will" featured heavily in tweets from Candidate, President-elect and President Trump, indicating perhaps that Trump (and his staff) regularly tweeted about future plans and ambitions. "Just" is also used quite frequently: a <a href="https://twitter.com/search?q=just%20from%3Arealdonaldtrump&src=typd" target="_blank">cursory analysis</a> shows that the word is chiefly used to discuss information/news events that Trump had "just" figured out.</p>
+		<p>Familiar campaign buzzwords like "make", "America" and "great" featured heavily in President Trump's tweets. Mentions of important topic areas such as jobs and Trump's new frenemy, the media, also rocketed during this time frame.</p>
 
-	<p>Play around with the tool below to find out more:</p>
+		<p>The word "will" featured heavily in tweets from Candidate, President-elect and President Trump, indicating perhaps that Trump (and his staff) regularly tweeted about future plans and ambitions. "Just" is also used quite frequently: a <a href="https://twitter.com/search?q=just%20from%3Arealdonaldtrump&src=typd" target="_blank">cursory analysis</a> shows that the word is chiefly used to discuss information/news events that Trump had "just" figured out.</p>
 
-	<div id="mentions">
-		<center>What words did @realDonaldTrump mention most frequently when he was tweeting as...</center>
-		<br>
-		<center>
-		  <button id="btnCandidate">Candidate?</button>
-		  <button id="btnPeotus">President-elect?</button>
-		  <button id="btnPotus">President?</button>
-		</center>
-		<br>
-		<center><img id="placeholder" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Donald_J._Trump_at_Marriott_Marquis_NYC_September_7th_2016_04.jpg/1280px-Donald_J._Trump_at_Marriott_Marquis_NYC_September_7th_2016_04.jpg"></center>
-		
+		<p>Play around with the tool below to find out more:</p>
+
+		<div id="mentions">
+			<center>What words did @realDonaldTrump mention most frequently when he was tweeting as...</center>
+			<br>
+			<center>
+			  <button id="btnCandidate">Candidate?</button>
+			  <button id="btnPeotus">President-elect?</button>
+			  <button id="btnPotus">President?</button>
+			</center>
+			<br>
+			<center><img id="placeholder" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Donald_J._Trump_at_Marriott_Marquis_NYC_September_7th_2016_04.jpg/1280px-Donald_J._Trump_at_Marriott_Marquis_NYC_September_7th_2016_04.jpg"></center>
+			
+			<script>
+				(function ($) {
+			    	$.fn.clickToggle = function (func1, func2) {
+			        	var funcs = [func1, func2];
+			        	this.data('toggleclicked', 0);
+			        	this.click(function () {
+				            var data = $(this).data();
+				            var tc = data.toggleclicked;
+				            $.proxy(funcs[tc], this)();
+				            data.toggleclicked = (tc + 1) % 2;
+			        });
+			        return this;
+			    	};
+				}(jQuery));
+
+				$('#btnCandidate').on({
+					'click': function(){
+			  		$('#placeholder').attr('src', 'https://github.com/alexandrama/scraping-twitter-for-mentions/blob/master/wordsAsCandidate_Rplot.jpeg?raw=true');
+			 	 }
+				});
+
+				$('#btnPeotus').on({
+					'click': function(){
+			  		$('#placeholder').attr('src', 'https://github.com/alexandrama/scraping-twitter-for-mentions/blob/master/wordsAsPeotus_Rplot.jpeg?raw=true');
+			  	}
+				});
+
+				$('#btnPotus').on({
+					'click': function(){
+			  		$('#placeholder').attr('src', 'https://github.com/alexandrama/scraping-twitter-for-mentions/blob/master/wordsAsPotus_Rplot.jpeg?raw=true');
+			 	 }
+				});
+			</script> 
+		</div>
+
+		<p>It also looked into how often Trump tweets about the media:</p>
+
+		<center><div id="container"></div>
+		<div id="customLegend"></div></center>
+
 		<script>
-			(function ($) {
-		    	$.fn.clickToggle = function (func1, func2) {
-		        	var funcs = [func1, func2];
-		        	this.data('toggleclicked', 0);
-		        	this.click(function () {
-			            var data = $(this).data();
-			            var tc = data.toggleclicked;
-			            $.proxy(funcs[tc], this)();
-			            data.toggleclicked = (tc + 1) % 2;
-		        });
-		        return this;
-		    	};
-			}(jQuery));
 
-			$('#btnCandidate').on({
-				'click': function(){
-		  		$('#placeholder').attr('src', 'https://github.com/alexandrama/scraping-twitter-for-mentions/blob/master/wordsAsCandidate_Rplot.jpeg?raw=true');
-		 	 }
-			});
+		    $(document).ready(function() {
+		    $('#container').highcharts({
 
-			$('#btnPeotus').on({
-				'click': function(){
-		  		$('#placeholder').attr('src', 'https://github.com/alexandrama/scraping-twitter-for-mentions/blob/master/wordsAsPeotus_Rplot.jpeg?raw=true');
-		  	}
-			});
+		    	chart: {
+		    		style: {
+		    			fontFamily: 'Helvetica'
+		    		}
+		    	},
 
-			$('#btnPotus').on({
-				'click': function(){
-		  		$('#placeholder').attr('src', 'https://github.com/alexandrama/scraping-twitter-for-mentions/blob/master/wordsAsPotus_Rplot.jpeg?raw=true');
-		 	 }
-			});
-		</script> 
+		      title: {
+		        text: 'How many times has @realDonaldTrump mentioned the media?'
+		      },
+
+		      subtitle: {
+		        text: 'Play around with the tool below to see how many times Donald Trump has tweeted about the media as candidate, PEOTUS and POTUS.'
+		      },
+
+		      xAxis: {
+		        categories: ['as candidate', 'as president-elect', 'as president'],
+		        gridLineWidth: 1
+		      },
+
+		      yAxis: {
+		        title: {
+		          text: 'Number of mentions',
+		          step: 2,
+		        },
+		        tickInterval: 2
+		      },
+
+		      series: [{
+		        type: 'line',
+		        name: 'CNN',
+		        id: 'CNN',
+		        color: 'green',
+		        data: [7, 13, 6]
+		      }, {
+		        type: 'line',
+		        name: 'NYTimes',
+		        id: 'NYTimes',
+		        color: 'blue',
+		        data: [1, 10, 12]
+		      }, {
+		        type: 'line',
+		        name: 'fake',
+		        id: 'fake',
+		        color: 'black',
+		        data: [0, 11, 26]
+		      }, {
+		        type: 'line',
+		        name: 'Fox',
+		        id: 'Fox',
+		        color: 'red',
+		        data: [1, 9, 12]
+		      }],
+		    }, function(chart) {
+
+		      var $customLegend = $('#customLegend').append('<select id="customSelect"></select>').find('select'),
+		        $option,
+		        serie;
+		        
+		          $customLegend.append('<option>Hide/show term</option>');
+
+		          $.each(chart.series, function(i, serie) {
+		            $customLegend.append('<option>' + serie.name + '</option>');
+		      });
+
+		      $customLegend.change(function() {
+		        $option = $(this).val();
+		        serie = chart.get($option);
+		        if (serie.visible) {
+		          serie.hide();
+		        } else {
+		          serie.show();
+		        }
+		      });
+		    });
+
+		    });
+
+		  </script>
+
+		<footer>
+			<center><p>Front-end design &amp; back-end data analysis by Alexandra Ma, 2017</p>
+			<p>Images of Donald Trump and the Twitter logo were obtained with a Wikimedia Commons licence</p></center>
+		</footer>
+
 	</div>
 
-	<p>It also looked into how often Trump tweets about the media:</p>
-
-	<center><div id="container"></div>
-	<div id="customLegend"></div></center>
-
-	<script>
-
-	    $(document).ready(function() {
-	    $('#container').highcharts({
-
-	    	chart: {
-	    		style: {
-	    			fontFamily: 'Helvetica'
-	    		}
-	    	},
-
-	      title: {
-	        text: 'How many times has @realDonaldTrump mentioned the media?'
-	      },
-
-	      subtitle: {
-	        text: 'Play around with the tool below to see how many times Donald Trump has tweeted about the media as candidate, PEOTUS and POTUS.'
-	      },
-
-	      xAxis: {
-	        categories: ['as candidate', 'as president-elect', 'as president'],
-	        gridLineWidth: 1
-	      },
-
-	      yAxis: {
-	        title: {
-	          text: 'Number of mentions',
-	          step: 2,
-	        },
-	        tickInterval: 2
-	      },
-
-	      series: [{
-	        type: 'line',
-	        name: 'CNN',
-	        id: 'CNN',
-	        color: 'green',
-	        data: [7, 13, 6]
-	      }, {
-	        type: 'line',
-	        name: 'NYTimes',
-	        id: 'NYTimes',
-	        color: 'blue',
-	        data: [1, 10, 12]
-	      }, {
-	        type: 'line',
-	        name: 'fake',
-	        id: 'fake',
-	        color: 'black',
-	        data: [0, 11, 26]
-	      }, {
-	        type: 'line',
-	        name: 'Fox',
-	        id: 'Fox',
-	        color: 'red',
-	        data: [1, 9, 12]
-	      }],
-	    }, function(chart) {
-
-	      var $customLegend = $('#customLegend').append('<select id="customSelect"></select>').find('select'),
-	        $option,
-	        serie;
-	        
-	          $customLegend.append('<option>Hide/show term</option>');
-
-	          $.each(chart.series, function(i, serie) {
-	            $customLegend.append('<option>' + serie.name + '</option>');
-	      });
-
-	      $customLegend.change(function() {
-	        $option = $(this).val();
-	        serie = chart.get($option);
-	        if (serie.visible) {
-	          serie.hide();
-	        } else {
-	          serie.show();
-	        }
-	      });
-	    });
-
-	    });
-
-	  </script>
-
 </body>
-
-<footer>
-	<center><p>Front-end design &amp; back-end data analysis by Alexandra Ma, 2017</p>
-	<p>Image of Donald Trump obtained with a Wikimedia Commons licence</p></center>
-</footer>
 
 </html>
