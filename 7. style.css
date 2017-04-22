@@ -1,3 +1,16 @@
+body {
+	background-image: url("https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-master1050-v4.jpg");
+	background-repeat: repeat;
+	background-size: 100px 80px;
+}
+
+#bodytext {
+	background: white;
+	display: inline-block;
+	width: 800px;
+	padding: 0px 20px 20px 20px;
+}
+
 h2 {
 	font-family: Helvetica;
 	color: blue;
@@ -8,7 +21,6 @@ body {
 	font-size: 12px;
 	display: inline-block;
 	width: 800px;
-	padding: 20px 30px;
 	text-align: justify;
 	padding: 5px;
 	word-wrap: break-word;
